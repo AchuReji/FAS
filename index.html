@@ -1,0 +1,45 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://i.postimg.cc/Bn1yyB6Y/Untitled-design-removebg-preview.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAS CONSULTANTS</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Google Translate (Hidden Container) -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Google Translate Init -->
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            autoDisplay: false,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <!-- Google Translate Script (IMPORTANT: defer, not async) -->
+    <script
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      defer
+    ></script>
+
+    <!-- React Entry -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
