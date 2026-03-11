@@ -1,22 +1,23 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Navbar from './componments/Navbar'
 import Home from './Pages/Home'
-// import { Nav } from './componments/Nav'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Aboutus from './Pages/Aboutus';
-import Services from './Pages/Services';
-import Blog from './Pages/Blog';
-import Contact from './Pages/Contact';
-import Footer from './componments/Footer';
-import { PropagateLoader } from 'react-spinners'
-import ScrollToTop from './componments/ScrollToTop';
-import CustomCursor from './componments/CustomCursor';
-import Careers from './Pages/Careers';
-import Howwework from './Pages/Howwework';
-import Navbar from './componments/ui/Navbar';
-import Loader from './componments/Loader';
-import SocialMedia from './componments/Socialmedia/SocialMedia';
-import NotFound from './componments/NotFound';
-import ServiceList from './componments/ServicesPages/ServiceList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AboutPage from './Pages/AboutPage'
+import Contact from './Pages/Contact'
+import Blog from './Pages/Blog'
+import WhyChooseus from './Pages/WhyChooseus'
+import Footers from './componments/Footers'
+import Serviceslist from './componments/Serviceslist'
+import Navservices from './Pages/Navservices'
+import ScrollToTop from './componments/ScrollToTop'
+import WhatsAppChat from './componments/WhatsAppChat'
+import Page from './componments/Blogpage/Page'
+import Gallery from './Pages/Gallery'
+import Ajith from './componments/Ceopages/Ajith'
+import Susan from './componments/Ceopages/Susan'
+import Loader from './componments/Loader'
+
+
 
 
 
@@ -25,8 +26,7 @@ import ServiceList from './componments/ServicesPages/ServiceList';
 
 
 function App() {
-  
-const [loading, setLoading] = useState(true);
+ const [loading, setLoading] = useState(true);
 useEffect(() => {
     setTimeout(() => setLoading(false), 2000); // simulate load
   }, []);
@@ -35,32 +35,31 @@ useEffect(() => {
   return loading ?<Loader /> : (
     <>
 
-<Suspense fallback="Loading translations...">
-    <BrowserRouter  >
-<CustomCursor/>
-
+<BrowserRouter>
+{/* 1. Add this here to handle the scroll reset */}
+      <ScrollToTop/>
     {/* <Nav/> */}
 <Navbar/>
-
-     <Routes>
-    <Route path="/" element={<Home/>}/> 
-    <Route path="/services" element={<Services/>}/> 
-      <Route path="/aboutus" element={<Aboutus/>}/>
-    <Route path="/Blog" element={<Blog/>}/>
-    <Route path="/contact" element={<Contact/>}/>
-    <Route path="/careers" element={<Careers/>}/>
-    <Route path="/WhyChooseus" element={<Howwework/>}/>
-    <Route path="/servicelist" element={<ServiceList/>}/>
-    <Route path="*" element={<NotFound />} />
-
-    </Routes>
-    <ScrollToTop/>
+<Routes>
+ <Route path="/" element={<Home/>}/> 
+  <Route path="/blog" element={<Blog/>}/> 
+  <Route path="/aboutus" element={<AboutPage/>}/> 
+    <Route path="/Services" element={<Navservices/>}/> 
+   <Route path="/whychooseus" element={<WhyChooseus/>}/>
+    <Route path="/contact" element={<Contact/>}/> 
+    <Route path="/gallery" element={<Gallery/>}/>
+    {/* services */}
+    <Route path="/servicelist" element={<Serviceslist/>}/>
+    {/* blogpages */}
+    <Route path="/blogpage" element={<Page/>}/>
+    {/* CEO page */}
+    <Route path="/Ajithsam" element={<Ajith/>}/>
+    <Route path="/Susan" element={<Susan/>}/>
+</Routes>
+<WhatsAppChat/>
+ <Footers/>
+     </BrowserRouter>
     
-    <Footer/>
-    
-    <SocialMedia/>
-    </BrowserRouter>
-    </Suspense>
     </>
   )
 }

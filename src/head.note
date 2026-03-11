@@ -1,353 +1,201 @@
-<!-- /* eslint-disable no-unused-vars */
-import { useState } from "react";
-import Logo from "../../assets/Logo.png"
-import {
-  FiMenu,
-  FiX,
-  FiChevronDown,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiSearch,
-} from "react-icons/fi";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaXTwitter,
-  FaGlobe,
-} from "react-icons/fa6";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Mail, MapPin, Facebook, Instagram, Linkedin, 
+  ChevronDown, Phone, Menu, X, Twitter, Clock, Youtube 
+} from 'lucide-react';
 
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
-const servicesMenu = [
-  { label: "Audit & Assurance", path:"/services" },
-  { label: "Accounting", path: "/services" },
-  { label: "Virtual CFO", path: "/services" },
-  { label: "Shared CFO",path: "/services" },
-  { label: "Incorporation", path: "/services" },
-  { label: "FTax & Zakat", path: "/services"},
-  { label: "Management Consulting", path: "/services" },
-  { label: "Internal Audit", path:"/services"},
-  { label: "ERP Implementation", path:"/services" },
-  { label: "Accounts Payable", path:"/services"},
-  { label: "Accountant Outsourcing",path:"/services" },
-  { label: "Payroll Management", path: "/services" },
-];
-
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(null);
-
-  const toggleSubmenu = (menu) => {
-    setOpenSubmenu(openSubmenu === menu ? null : menu);
-  };
-  
- const changeLanguage = (lang) => {
-  const tryChange = () => {
-    const select = document.querySelector(".goog-te-combo");
-
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event("change"));
-    } else {
-      // Retry until Google Translate is ready
-      setTimeout(tryChange, 300);
-    }
-  };
-
-  tryChange();
-};
+  const navLinks = [
+    { name: 'Home', hasDropdown: true },
+    { name: 'Pages', hasDropdown: true },
+    { name: 'Services', hasDropdown: true },
+    { name: 'Portfolio', hasDropdown: true },
+    { name: 'News', hasDropdown: true },
+    { name: 'Contact', hasDropdown: false },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* ================= TOP BAR ================= */}
-      <div className="hidden lg:flex bg-[#222F44] text-white text-sm px-6 py-2 justify-between">
-        <div className="flex gap-6">
-          <span className="flex items-center gap-2">
-            <FiMail /> hello@fasksa.com
-          </span>
-          <span className="flex items-center gap-2">
-            <FiPhone /> 9995396351
-          </span>
+    <header className="w-full font-sans relative">
+      {/* --- DESKTOP TOP BAR --- */}
+      <div className="hidden lg:flex items-center justify-between border-b border-gray-100 px-4 xl:px-20 py-2 text-[13px] text-gray-700">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 hover:text-[#C5D941] cursor-pointer transition-colors">
+            <Mail size={14} className="text-[#004236]" />
+            <span>needhelp@company.com</span>
+          </div>
+          <div className="flex items-center gap-2 border-l pl-6 border-gray-200">
+            <MapPin size={14} className="text-[#004236]" />
+            <span>6391 Elgin St. Celina, Delaware 10299</span>
+          </div>
         </div>
-
-        <div className="flex items-center gap-5">
-          <span className="flex items-center gap-2">
-            <FiMapPin /> Saudi Arabia
-          </span>
-          <FaFacebookF />
-          <FaXTwitter />
-         <div className="relative group cursor-pointer">
-  <span className="flex items-center gap-1">
-    🌐 EN
-  </span>
-
-  <div className="absolute right-0 mt-2 bg-white text-black shadow-lg rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all z-50">
-    <button
-      onClick={() => changeLanguage("en")}
-      className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
-    >
-      English
-    </button>
-    <button
-      onClick={() => changeLanguage("ar")}
-      className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
-    >
-      العربية
-    </button>
-    <button
-      onClick={() => changeLanguage("hi")}
-      className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
-    >
-      हिंदी
-    </button>
-  </div>
-</div>
-
-          <FaLinkedinIn />
+        
+        <div className="flex items-center bg-[#C5D941] -mr-4 xl:-mr-20 h-10 px-8 relative">
+          <div className="flex gap-5 mr-8 font-bold text-[#1A2E24]">
+            <a href="#" className="hover:text-white transition-colors">About</a>
+            <a href="#" className="hover:text-white transition-colors">Faqs</a>
+            <a href="#" className="hover:text-white transition-colors">Contact</a>
+          </div>
+          <div className="flex gap-4 border-l border-black/10 pl-6">
+            <Facebook size={14} className="cursor-pointer hover:text-white" />
+            <Instagram size={14} className="cursor-pointer hover:text-white" />
+            <Twitter size={14} className="cursor-pointer hover:text-white" />
+            <Linkedin size={14} className="cursor-pointer hover:text-white" />
+          </div>
         </div>
       </div>
-{/* bg-[#D4D6CC] */}
-      {/* ================= MAIN NAVBAR ================= */}
-      <div className=" bg-[#F0F0F0] border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
-  <img
-    src={Logo}
-    alt="Logo"
-    className="w-17 h-17 object-cover rounded-full"
-  />
 
-  <div className="leading-tight">
-    <div className="font-bold text-lg text-[#222F44]">
-      FAS CONSULTANTS
-    </div>
-    <div className="text-xs text-[#222F44]">
-      Financial and Advisory Services
-    </div>
-  </div>
-</a>
+      {/* --- MAIN NAVBAR (DESKTOP) --- */}
+      <nav className="bg-white px-4 xl:px-20 py-4 lg:py-5 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-3 cursor-pointer">
+          <div className="relative w-9 h-9">
+            <div className="absolute inset-0 bg-[#004236] transform -rotate-12 rounded-sm"></div>
+            <div className="absolute top-1 left-4 w-4 h-4 bg-[#C5D941] rounded-full"></div>
+          </div>
+          <span className="text-3xl font-extrabold text-[#1A2E24] tracking-tighter">Consultez</span>
+        </div>
 
-          {/* ================= DESKTOP MENU ================= */}
-          <nav className="hidden lg:flex gap-8 font-medium text-[#222F44]">
-            <a href="/" className=" relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#222F44] after:transition-all after:duration-300 hover:after:w-full  ">
-              Home
-            </a>
-            <a href="/aboutus" className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">
-            Aboutus</a>
+        {/* Links */}
+        <ul className="hidden lg:flex items-center gap-9">
+          {navLinks.map((link) => (
+            <li key={link.name} className="group flex items-center gap-1 cursor-pointer font-bold text-[#1A2E24] hover:text-[#C5D941] transition-colors text-[15px]">
+              {link.name}
+              {link.hasDropdown && <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform" />}
+            </li>
+          ))}
+        </ul>
 
-            {/* SERVICES DROPDOWN */}
-            <div className="relative group">
-              <button className="flex items-center gap-1 hover:text-blue-900">
-               <a href="/services" className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">
-               Services</a>  <FiChevronDown />
-              </button>
+        {/* Contact Info & Animated Button */}
+        <div className="flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-4">
+            {/* Animated Phone Icon */}
+            <div className="relative">
+              <motion.div 
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="absolute inset-0 bg-[#C5D941] rounded-full opacity-30"
+              />
+              <div className="bg-[#C5D941] p-4 rounded-full relative z-10">
+                <Phone size={22} fill="#1A2E24" className="text-[#1A2E24]" />
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] font-black text-[#004236] tracking-[0.2em]">PHONE:</p>
+              <p className="text-[17px] font-bold text-[#1A2E24]">+00 2222 222 00</p>
+            </div>
+          </div>
 
-              <div className="absolute left-0 top-full mt-3 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+          {/* Animated Contact Button */}
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative overflow-hidden group bg-[#003028] text-white px-10 py-5 font-bold tracking-wider text-sm hidden md:block"
+          >
+            <span className="relative z-10">Contact Now</span>
+            <div className="absolute inset-0 bg-[#C5D941] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+            <span className="absolute inset-0 flex items-center justify-center text-[#003028] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+              Contact Now
+            </span>
+          </motion.button>
+
+          {/* Mobile Menu Toggle */}
+          <button onClick={() => setIsMenuOpen(true)} className="lg:hidden p-2 text-[#003028]">
+            <Menu size={32} />
+          </button>
+        </div>
+      </nav>
+
+      {/* --- MOBILE SIDEBAR MENU (Reference Image 2) --- */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+            />
+            {/* Sidebar */}
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.4 }}
+              className="fixed right-0 top-0 h-full w-[300px] bg-[#1A1A1A] z-50 shadow-2xl flex flex-col text-white"
+            >
+              {/* Sidebar Header */}
+              <div className="p-6 flex justify-between items-center border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <div className="relative w-7 h-7">
+                    <div className="absolute inset-0 bg-white transform -rotate-12 rounded-sm"></div>
+                    <div className="absolute top-0.5 left-3 w-3 h-3 bg-[#C5D941] rounded-full"></div>
+                  </div>
+                  <span className="text-2xl font-bold">Consultez</span>
+                </div>
+                <button onClick={() => setIsMenuOpen(false)} className="bg-white/10 p-2 hover:bg-white/20 transition-colors">
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Navigation List */}
+              <div className="flex-1 overflow-y-auto">
                 <ul className="py-2">
-                  
-                  {servicesMenu.map((item) => (
-                    <li key={item.path}>
-                      <a
-                         href={item.path}
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-900"
-                      >
-                        {item.label}
-                      </a>
+                  {navLinks.map((link) => (
+                    <li key={link.name} className="px-6 py-4 flex justify-between items-center border-b border-white/5 hover:bg-white/5 cursor-pointer font-medium">
+                      {link.name}
+                      {link.hasDropdown && <ChevronDown size={18} className="text-gray-500" />}
                     </li>
                   ))}
                 </ul>
+
+                {/* Contact Info Section */}
+                <div className="p-8 space-y-8">
+                  <div className="flex items-start gap-4">
+                    <Phone size={32} className="text-white mt-1" />
+                    <div>
+                      <p className="text-[#C5D941] text-xs font-bold tracking-widest mb-1">CALL NOW</p>
+                      <p className="text-lg font-bold">+92 (8800) - 98670</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Mail size={32} className="text-white mt-1" />
+                    <div>
+                      <p className="text-[#C5D941] text-xs font-bold tracking-widest mb-1">SEND EMAIL</p>
+                      <p className="text-lg font-bold">help@company.com</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Clock size={32} className="text-white mt-1" />
+                    <div>
+                      <p className="text-[#C5D941] text-xs font-bold tracking-widest mb-1">SEND EMAIL</p>
+                      <p className="text-sm font-bold leading-relaxed">
+                        Mon - Sat 8:00 - 6:30,<br /> Sunday - CLOSED
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <a href="/Blog" className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">
-          News & Updates</a>
-            <a href="/how-we-work" className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">
-            Why Choose us</a>
-            <a href="/careers" className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">
-            Careers</a>
-            
-          </nav>
-
-          {/* Right Side */}
-          <div className="flex items-center gap-4">
-            
-            <button className="hidden lg:flex items-center gap-2 bg-[#222F44] text-white px-5 py-2 rounded-md">
-              <FiPhone /><a href="/contact"> Let’s Talk</a> 
-            </button>
-
-            <button className="lg:hidden" onClick={() => setMobileOpen(true)}>
-              <FiMenu size={28} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* ================= MOBILE DRAWER ================= */}
-      <div
-        className={`fixed inset-0 z-50 ${mobileOpen ? "visible" : "invisible"} `}
-      >
-        <div
-          className="absolute inset-0 bg-black/40"
-          onClick={() => setMobileOpen(false)}
-        />
-
-        <div
-          className={`absolute right-0 top-0 h-full w-[85%] bg-[#F0F0F0] p-6 transform transition-transform ${
-            mobileOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex justify-end">
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="bg-[#222F44] text-white p-2 rounded"
-            >
-              <FiX />
-            </button>
-          </div>
-
-          <ul className="mt-6 space-y-5 text-base font-medium text-gray-900">
-  {/* Home */}
-  <li>
-    <a href="/"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      Home
-    </a>
-  </li>
-
-  {/* About */}
-  <li>
-    <a href="/aboutus"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      About
-    </a>
-  </li>
-
-  {/* SERVICES */}
-  <li>
-    <button
-      onClick={() => toggleSubmenu("services")}
-      className="w-full flex items-center justify-between"
-    >
-      <span className="relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full">Services</span>
-      <FiChevronDown
-        className={`transition-transform duration-300 ${
-          openSubmenu === "services" ? "rotate-180" : ""
-        }`}
-      />
-    </button>
-
-    {openSubmenu === "services" && (
-      <div className="mt-3 pl-4 space-y-3 text-sm text-gray-700">
-        {servicesMenu.map((item) => (
-          <a href={item.path}
-            to={item.path}
-            onClick={() => setMobileOpen(false)}
-            className="block"
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
-    )}
-  </li>
-
-  {/* Blog */}
-  <li>
-    <a href="/blog"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      Blog
-    </a>
-  </li>
-
-  {/* How we work */}
-  <li>
-    <a href="/how-we-work"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      How we work
-    </a>
-  </li>
-
-  {/* Careers */}
-  <li>
-    <a href="/careers"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      Careers
-    </a>
-  </li>
-
-  
-
-  {/* Contact */}
-  <li>
-    <a href="/contact"
-      onClick={() => setMobileOpen(false)}
-      className="block relative inline-block transition-transform duration-300 hover:-translate-y-[1px] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-300 hover:after:w-full"
-    >
-      Contact Us
-    </a>
-  </li>
-</ul>
-
-
-          {/* Contact Info */}
-          <div className="mt-10 border-t pt-6 text-sm space-y-3 ">
-            <div className="flex gap-3">
-              <FiMapPin /> Saudi Arabia
-            </div>
-            <div className="flex gap-3">
-              <FiPhone /> 9995396351
-            </div>
-            <div className="flex gap-3">
-              <FiMail /> hello@fasksa.com
-            </div>
-          </div>
-          <div className="mt-6">
-  <p className="text-sm mb-2 font-semibold">Language</p>
-  <div className="flex gap-3">
-    <button onClick={() => changeLanguage("en")} className="px-3 py-1 bg-gray-200 rounded">
-      EN
-    </button>
-    <button onClick={() => changeLanguage("ar")} className="px-3 py-1 bg-gray-200 rounded">
-      AR
-    </button>
-    <button onClick={() => changeLanguage("hi")} className="px-3 py-1 bg-gray-200 rounded">
-      HI
-    </button>
-  </div>
-</div>  
-        </div>
-      </div>
+              {/* Social Footer */}
+              <div className="grid grid-cols-4 border-t border-white/10">
+                <div className="p-4 flex justify-center border-r border-white/10 hover:bg-[#C5D941] hover:text-black transition-colors cursor-pointer"><Twitter size={18} /></div>
+                <div className="p-4 flex justify-center border-r border-white/10 hover:bg-[#C5D941] hover:text-black transition-colors cursor-pointer"><Facebook size={18} /></div>
+                <div className="p-4 flex justify-center border-r border-white/10 hover:bg-[#C5D941] hover:text-black transition-colors cursor-pointer"><Youtube size={18} /></div>
+                <div className="p-4 flex justify-center hover:bg-[#C5D941] hover:text-black transition-colors cursor-pointer"><Instagram size={18} /></div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
-} -->
+};
 
-
-
-<!-- index.js  -->
-
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://i.postimg.cc/Bn1yyB6Y/Untitled-design-removebg-preview.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FCS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html> -->
+export default Navbar;

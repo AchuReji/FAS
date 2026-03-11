@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { ChevronRight } from 'lucide-react';
-import Videocard from '../componments/news&updates/Videocard';
-import BlogUpdates from '../componments/Blog/BlogUpdates';
+import Gallerypage from '../componments/Gallerypage';
 
-function Blog({ title = "News & Updates " }) {
+function Gallery({ title = "Our Gallery " }) {
   return (
-    <>
+   <>
     <div className="relative w-full font-sans">
       {/* Main Banner Container */}
       <div className="relative h-[350px] md:h-[450px] w-full bg-[#0a0a0a] overflow-hidden flex items-center">
@@ -60,10 +59,11 @@ function Blog({ title = "News & Updates " }) {
         </div>
       </div>
     </div>
-    <Videocard/>
-    <BlogUpdates/>
-    </>
+   {/* ------------------------------------------------------------ */}
+   <Gallerypage/>
+   
+   </>
   )
 }
 
-export default Blog
+export default Gallery

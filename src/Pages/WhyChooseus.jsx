@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { ChevronRight } from 'lucide-react';
-import Videocard from '../componments/news&updates/Videocard';
-import BlogUpdates from '../componments/Blog/BlogUpdates';
+import Whychooseuu from '../componments/Whychooseuu';
 
-function Blog({ title = "News & Updates " }) {
+
+function WhyChooseus({ title = " Why Choose us" }) {
   return (
-    <>
-    <div className="relative w-full font-sans">
+   <>
+ <div className="relative w-full font-sans">
       {/* Main Banner Container */}
       <div className="relative h-[350px] md:h-[450px] w-full bg-[#0a0a0a] overflow-hidden flex items-center">
         
@@ -59,11 +59,17 @@ function Blog({ title = "News & Updates " }) {
           </motion.div>
         </div>
       </div>
+
+      
+      
     </div>
-    <Videocard/>
-    <BlogUpdates/>
-    </>
+{/* ------------------------------------------------------------------------------------------ */}
+
+<Whychooseuu/>
+
+   </>
   )
 }
 
-export default Blog
+export default WhyChooseus
+

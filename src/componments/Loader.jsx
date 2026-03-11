@@ -10,7 +10,7 @@ function Loader() {
         {/* Logo */}
         <div className="absolute inset-0 flex items-center justify-center">
           <img
-            src="https://i.postimg.cc/Bn1yyB6Y/Untitled-design-removebg-preview.png" 
+            src="https://i.postimg.cc/c1jgTWzz/CA-India-jpg-removebg-preview.png" 
             alt="PSV"
             className="w-full animate-pulse"
           />
