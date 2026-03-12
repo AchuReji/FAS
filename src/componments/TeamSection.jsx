@@ -5,15 +5,15 @@ import { Plus, X, Facebook, Instagram, Linkedin, Share2 } from 'lucide-react';
 const consultants = [
   { 
     id: 1, 
-    name: "Ajith Sam", 
-    // role: "Partner", 
+    name: "CA Ajith Sam", 
+    role: "Partner", 
     image: "https://image2url.com/r2/default/images/1773137730588-65ff7d4c-eb13-45d3-917b-933f69e9a079.jpeg",
     path: "/Ajithsam" 
   },
   {  
     id: 2, 
-    name: "Susan Varghese", 
-    // role: "Partner", 
+    name: "CA Susan Varghese", 
+    role: "Partner", 
     image: "https://image2url.com/r2/default/images/1772530536857-15b70256-ef46-418a-80df-c29dba79e326.jpeg",
     path: "/Susan" 
   },
@@ -111,8 +111,8 @@ export default function TeamSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <span className="bg-[#55B84A] text-white text-[9px] font-black px-4 py-1 rounded-full uppercase tracking-widest shadow-sm">
-            Top Consultant
+          <span className="bg-[#55B84A] text-white text-[15px] font-black px-4 py-1 rounded-full uppercase tracking-widest shadow-sm">
+            Top Consultants
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#111827] mt-6 leading-tight">
             Enhance Your Experience with <br className="hidden md:block" /> 

@@ -174,7 +174,7 @@ const Susan = () => {
               Contact Me <ArrowRight size={24} />
             </a>
             <a 
-              href="tel:+919995396351" 
+              href="tel:+919447056855" 
               className="bg-white/10 backdrop-blur-md border-2 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all flex items-center justify-center gap-3"
               style={{ borderColor: brandGreen }}
             >

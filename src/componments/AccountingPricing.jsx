@@ -19,7 +19,7 @@ const AccountingPricing = () => {
       title: "ITR Filing",
       price: "₹1,000",
       features: [
-        "Income from Salary & House",
+        "Income from Salary & Other Sources",
         "Form 16/26AS Verification",
         "Tax Saving Investment Audit",
         "Electronic Filing (E-file)",

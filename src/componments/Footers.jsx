@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl">✉️</div>
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-2xl">✉️</div>
               <div>
   <p className="text-gray-400 text-sm">Email Us:</p>
   <p className="font-bold text-lg flex flex-col">
@@ -72,7 +72,13 @@ const Footer = () => {
       href="mailto:caajithsam@gmail.com" 
       className="hover:text-[#55B84A] transition-colors"
     >
-      caajithsam@gmail.com
+      caajithsam@gmail.com 
+    </a>
+    <a 
+      href="casusanvarghese@gmail.com" 
+      className="hover:text-[#55B84A] transition-colors"
+    >
+     casusanvarghese@gmail.com
     </a>
   </p>
 </div>

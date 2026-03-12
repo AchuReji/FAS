@@ -32,10 +32,9 @@ function Connects() {
               Address Line
             </h3>
             <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-              First Floor, Charis, Engineering college Road, PO, Chavadimukku,
-              Sreekariyam, Thiruvananthapuram, Kerala 695017
+              TC 5/1025(6), FIRST FLOOR, CHARIS EDASSERIAYATH, CET ROAD, CHAVADIMUKKU, SREEKARYAM P O, THIRUVANANTHAPURAM, PIN: 695017, KERALA
               <br /> <br />
-              First Floor,Keezhuttu Building, Above Aadram Medical center TVM
+              First Floor,Keezhuttu Building, Above Aardram Medical center TVM
               Road,Ayur P.O,Kerala 691533
             </p>
           </div>
@@ -56,10 +55,10 @@ function Connects() {
     +91-9995396351
   </a>
   <a 
-    href="tel:+919995396351" 
+    href="tel:+919447056855" 
     className="hover:text-white transition-colors"
   >
-    +91-9995396351
+    +91-9447056855
   </a>
 </p>
           </div>
@@ -87,6 +86,24 @@ function Connects() {
     className="hover:text-gray-200 transition-colors duration-300"
   >
     caajithsam@gmail.com
+
+
+  </a>
+  <br />
+   <a 
+    href="mailto:casusanvarghese@gmail.com" 
+    className="hover:text-gray-200 transition-colors duration-300"
+  >
+    casusanvarghese@gmail.com
+
+
+  </a>
+  <br />
+  <a 
+    href="mailto:psvayur@gmail.com" 
+    className="hover:text-gray-200 transition-colors duration-300"
+  >
+    psvayur@gmail.com
 
 
   </a>

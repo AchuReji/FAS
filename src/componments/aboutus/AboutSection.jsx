@@ -90,12 +90,11 @@ const AboutSection = () => {
                 variants={fadeIn}
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#145887] leading-[1.1]"
               >
-                Excellence in <span className="text-[#55B84A]">Financial</span> Engineering.
+                Excellence in <span className="text-[#55B84A]">Financial</span> Services.
               </motion.h2>
               
               <motion.p variants={fadeIn} className="text-gray-600 text-lg leading-relaxed">
-                We bridge the gap between complex regulatory requirements and your business goals, 
-                providing expert chartered accounting services with surgical precision.
+                Incorporated in 2014, Philip Sam Varghese & Co, is a highly talented team of chartered accountants, audit managers and accountants focusing on Audit & Assurance, Accounting, Compliance and Advisory Services
               </motion.p>
 
               {/* Core Pillars */}
